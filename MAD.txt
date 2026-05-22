@@ -1,0 +1,545 @@
+1. Student Welcome Application
+activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome Student"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next" />
+
+</LinearLayout>
+MainActivity.kt
+package com.example.app
+
+import android.os.Bundle
+import android.widget.Button
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val btn = findViewById<Button>(R.id.btn)
+
+        btn.setOnClickListener {
+            Toast.makeText(this, "Welcome", Toast.LENGTH_SHORT).show()
+        }
+    }
+}
+2. Calculator Application
+activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <EditText
+        android:id="@+id/n1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Number 1"
+        android:inputType="numberDecimal"/>
+
+    <EditText
+        android:id="@+id/n2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Number 2"
+        android:inputType="numberDecimal"/>
+
+    <Button
+        android:id="@+id/add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add"/>
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"/>
+
+</LinearLayout>
+MainActivity.kt
+package com.example.app
+
+import android.os.Bundle
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
+
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val n1 = findViewById<EditText>(R.id.n1)
+        val n2 = findViewById<EditText>(R.id.n2)
+        val add = findViewById<Button>(R.id.add)
+        val result = findViewById<TextView>(R.id.result)
+
+        add.setOnClickListener {
+            val a = n1.text.toString().toInt()
+            val b = n2.text.toString().toInt()
+            result.text = "Result = ${a + b}"
+        }
+    }
+}
+3. BMI Calculator
+activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <EditText
+        android:id="@+id/weight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Weight"/>
+
+    <EditText
+        android:id="@+id/height"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Height"/>
+
+    <Button
+        android:id="@+id/calc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calculate"/>
+
+    <TextView
+        android:id="@+id/res"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
+MainActivity.kt
+package com.example.app
+
+import android.os.Bundle
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
+
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val w = findViewById<EditText>(R.id.weight)
+        val h = findViewById<EditText>(R.id.height)
+        val btn = findViewById<Button>(R.id.calc)
+        val res = findViewById<TextView>(R.id.res)
+
+        btn.setOnClickListener {
+            val weight = w.text.toString().toFloat()
+            val height = h.text.toString().toFloat()
+
+            val bmi = weight / (height * height)
+
+            res.text = "BMI = $bmi"
+        }
+    }
+}
+4. User Registration Form
+activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"/>
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"/>
+
+    <EditText
+        android:id="@+id/pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"/>
+
+    <Button
+        android:id="@+id/register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register"/>
+
+</LinearLayout>
+MainActivity.kt
+package com.example.app
+
+import android.os.Bundle
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
+
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val name = findViewById<EditText>(R.id.name)
+        val email = findViewById<EditText>(R.id.email)
+        val pass = findViewById<EditText>(R.id.pass)
+        val btn = findViewById<Button>(R.id.register)
+
+        btn.setOnClickListener {
+
+            if (name.text.isEmpty())
+                name.error = "Enter Name"
+
+            else if (email.text.isEmpty())
+                email.error = "Enter Email"
+
+            else if (pass.text.isEmpty())
+                pass.error = "Enter Password"
+
+            else
+                Toast.makeText(this, "Registered", Toast.LENGTH_SHORT).show()
+        }
+    }
+}
+5. Service Access App
+activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <Button
+        android:id="@+id/call"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dial"/>
+
+    <Button
+        android:id="@+id/web"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Browser"/>
+
+</LinearLayout>
+MainActivity.kt
+package com.example.app
+
+import android.content.Intent
+import android.net.Uri
+import android.os.Bundle
+import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
+
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val call = findViewById<Button>(R.id.call)
+        val web = findViewById<Button>(R.id.web)
+
+        call.setOnClickListener {
+            val i = Intent(Intent.ACTION_DIAL)
+            startActivity(i)
+        }
+
+        web.setOnClickListener {
+            val i = Intent(Intent.ACTION_VIEW,
+                Uri.parse("https://www.google.com"))
+            startActivity(i)
+        }
+    }
+}
+6. Color Palette App
+activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/red"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Red"/>
+
+    <Button
+        android:id="@+id/green"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Green"/>
+
+</LinearLayout>
+MainActivity.kt
+package com.example.app
+
+import android.graphics.Color
+import android.os.Bundle
+import android.widget.Button
+import android.widget.LinearLayout
+import androidx.appcompat.app.AppCompatActivity
+
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val layout = findViewById<LinearLayout>(R.id.layout)
+        val red = findViewById<Button>(R.id.red)
+        val green = findViewById<Button>(R.id.green)
+
+        red.setOnClickListener {
+            layout.setBackgroundColor(Color.RED)
+        }
+
+        green.setOnClickListener {
+            layout.setBackgroundColor(Color.GREEN)
+        }
+    }
+}
+7. Employee Registration Form
+MainActivity.kt
+package com.example.app
+
+import android.os.Bundle
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
+
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val phone = findViewById<EditText>(R.id.phone)
+        val btn = findViewById<Button>(R.id.submit)
+
+        btn.setOnClickListener {
+
+            if (phone.text.length != 10)
+                phone.error = "Invalid Phone"
+
+            else
+                Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+        }
+    }
+}
+activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Phone"/>
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit"/>
+
+</LinearLayout>
+8. Event Handling App
+activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <EditText
+        android:id="@+id/feed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Feedback"/>
+
+    <Button
+        android:id="@+id/send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Send"/>
+
+</LinearLayout>
+MainActivity.kt
+package com.example.app
+
+import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.example.app.databinding.ActivityMainBinding
+
+class MainActivity : AppCompatActivity() {
+
+    lateinit var binding: ActivityMainBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.send.setOnClickListener {
+            Toast.makeText(this, "Feedback Sent", Toast.LENGTH_SHORT).show()
+        }
+    }
+}
+9. Bus Ticket Booking App
+activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Passenger Name"/>
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save"/>
+
+</LinearLayout>
+MainActivity.kt
+package com.example.app
+
+import android.content.Context
+import android.os.Bundle
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
+
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val name = findViewById<EditText>(R.id.name)
+        val save = findViewById<Button>(R.id.save)
+
+        val sp = getSharedPreferences("data", Context.MODE_PRIVATE)
+
+        name.setText(sp.getString("username", ""))
+
+        save.setOnClickListener {
+
+            val editor = sp.edit()
+            editor.putString("username", name.text.toString())
+            editor.apply()
+
+            Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show()
+        }
+    }
+}
+10. College Navigation App
+activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/about"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="About"/>
+
+</LinearLayout>
+MainActivity.kt
+package com.example.app
+
+import android.content.Intent
+import android.os.Bundle
+import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
+
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val about = findViewById<Button>(R.id.about)
+
+        about.setOnClickListener {
+            startActivity(Intent(this, AboutActivity::class.java))
+        }
+    }
+}
+AboutActivity.kt
+package com.example.app
+
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+
+class AboutActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_about)
+    }
+}
+activity_about.xml
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:text="About Page"
+    android:textSize="24sp"/>
